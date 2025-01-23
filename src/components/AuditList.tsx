@@ -9,7 +9,7 @@ interface AuditItem {
 }
 
 const AuditList: React.FC = () => {
-  const auditData = useJsonData<AuditItem>('/data/clist-extension.json');
+  const auditData = useJsonData<AuditItem>('/lb-audit-demo/data/clist-extension.json');
 
   return (
     <div className="p-4">
