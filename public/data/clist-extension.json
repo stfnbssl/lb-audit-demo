@@ -2125,7 +2125,8 @@
         "ISA_n_62443_n_(2-4)": "SP.01.01_n_SP.01.02_n_SP.01.03",
         "ISO_n_27001": "A.6.3",
         "NIST CSF": "PR.AT-1",
-        "description": "Viene verificato se l'organizzazione somministra corsi di formazione specifici in ambito cybersecurity che sono personalizzati in base ai risultati delle attività di test e alla tipologia di mansione svolta dai dipendenti. Questo permette di indirizzare le aree di debolezza identificate e migliorare la consapevolezza e le competenze di cybersecurity tra il personale. La formazione mirata, infatti, contribuisce a ridurre il rischio di incidenti di sicurezza derivanti da errori umani e aumenta la capacità di individuare e rispondere efficacemente alle minacce.",
+        "description": "Sono somministrati corsi specifici in ambito cybersecurity sulla base dei risultati emersi dalle attività di test svolte e della tipologia di mansione svolta da parte delle singole risorse?",
+        "detailed_explanation": "Viene verificato se l'organizzazione somministra corsi di formazione specifici in ambito cybersecurity che sono personalizzati in base ai risultati delle attività di test e alla tipologia di mansione svolta dai dipendenti. Questo permette di indirizzare le aree di debolezza identificate e migliorare la consapevolezza e le competenze di cybersecurity tra il personale. La formazione mirata, infatti, contribuisce a ridurre il rischio di incidenti di sicurezza derivanti da errori umani e aumenta la capacità di individuare e rispondere efficacemente alle minacce.",
         "glossary": {
             "Cybersecurity": {
                 "definition": "Protezione dei sistemi, delle reti e dei programmi dagli attacchi digitali.",
@@ -8041,64 +8042,6 @@
             {
                 "title": "ENISA Guidelines on Operator Security Measures",
                 "url": " https://www.enisa.europa.eu/publications/guidelines-on-operator-security-measures"
-            }
-        ]
-    },
-    {
-        "idd": "undefined",
-        "area": "undefined",
-        "category": "undefined",
-        "description": "undefined",
-        "detailed_explanation": "One key item to consider in a cybersecurity audit is the implementation and effectiveness of a firewall. A firewall acts as a barrier between a trusted internal network and untrusted external networks, such as the internet. It monitors and controls incoming and outgoing network traffic based on predetermined security rules. The purpose of a firewall is to reduce or eliminate the occurrence of unwanted network communications while allowing legitimate communication to flow freely. During an audit, it is crucial to ensure that the firewall is configured correctly, up-to-date, and effectively protecting network resources from unauthorized access or attacks.",
-        "glossary": [
-            {
-                "term": "Firewall",
-                "definition": "A security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules.",
-                "link": "https://en.wikipedia.org/wiki/Firewall_(computing)"
-            },
-            {
-                "term": "Network Traffic",
-                "definition": "The amount of data moving across a network at any given time.",
-                "link": "https://en.wikipedia.org/wiki/Network_traffic"
-            }
-        ],
-        "related_links": [
-            {
-                "title": "NIST SP 800-41 Revision 1, Guidelines on Firewalls and Firewall Policy",
-                "url": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final"
-            },
-            {
-                "title": "ISO/IEC 27001:2013 - Information Security Management Systems",
-                "url": "https://www.iso.org/standard/54534.html"
-            }
-        ]
-    },
-    {
-        "idd": "undefined",
-        "area": "undefined",
-        "category": "undefined",
-        "description": "undefined",
-        "detailed_explanation": "One key item to consider in a cybersecurity audit is the implementation and effectiveness of a firewall. A firewall acts as a barrier between a trusted internal network and untrusted external networks, such as the internet. It monitors and controls incoming and outgoing network traffic based on predetermined security rules. The purpose of a firewall is to reduce or eliminate the occurrence of unwanted network communications while allowing legitimate communication to flow freely. During an audit, it is crucial to ensure that the firewall is configured correctly, up-to-date, and effectively protecting network resources from unauthorized access or attacks.",
-        "glossary": [
-            {
-                "term": "Firewall",
-                "definition": "A security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules.",
-                "link": "https://en.wikipedia.org/wiki/Firewall_(computing)"
-            },
-            {
-                "term": "Network Traffic",
-                "definition": "The amount of data moving across a network at any given time.",
-                "link": "https://en.wikipedia.org/wiki/Network_traffic"
-            }
-        ],
-        "related_links": [
-            {
-                "title": "NIST SP 800-41 Revision 1, Guidelines on Firewalls and Firewall Policy",
-                "url": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final"
-            },
-            {
-                "title": "ISO/IEC 27001:2013 - Information Security Management Systems",
-                "url": "https://www.iso.org/standard/54534.html"
             }
         ]
     }

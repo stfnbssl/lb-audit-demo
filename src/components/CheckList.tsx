@@ -1,16 +1,56 @@
 import React, { useState } from 'react';
 import FilterableAuditList from './FilterableAuditList';
 import CheckListItemDetail from './CheckListItemDetail';
-import { Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, InputBase, Box } from '@mui/material';
+import { Menu as MenuIcon, Search as SearchIcon, DarkMode, LightMode } from '@mui/icons-material';
 import { useJsonData } from '../hooks/useJsonData';
 import { CheckListDataItem } from '../Types';
  
-const CheckList: React.FC = () => {
+const CheckList: React.FC<{ onToggleTheme?: () => void; isDarkMode?: boolean }> = ({ onToggleTheme, isDarkMode }) => {
     const auditData = normalizeItems(useJsonData<CheckListDataItem>('/lb-audit-demo/data/clist-extension.json'));
     const [selectedItem, setSelectedItem] = useState<CheckListDataItem|null>(null);
 
     return (
-        <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'row' }}>
+        <React.Fragment>
+        <AppBar position="static" sx={{ backgroundColor: isDarkMode ? '#333' : '#3f51b5' }}>
+            <Toolbar>
+                {/* Left Menu Icon */}
+                <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+                <MenuIcon />
+                </IconButton>
+
+                {/* Title */}
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                Audit Checklist
+                </Typography>
+
+                {/* Search Bar */}
+                <Box
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: isDarkMode ? '#555' : '#ffffff',
+                    color: isDarkMode ? '#ffffff' : '#333',
+                    borderRadius: 1,
+                    padding: '0 10px',
+                    width: '300px',
+                }}
+                >
+                <SearchIcon />
+                <InputBase
+                    placeholder="Search…"
+                    inputProps={{ 'aria-label': 'search' }}
+                    sx={{ ml: 1, flex: 1, color: 'inherit' }}
+                />
+                </Box>
+
+                {/* Theme Switcher */}
+                <IconButton color="inherit" onClick={onToggleTheme}>
+                {isDarkMode ? <LightMode /> : <DarkMode />}
+                </IconButton>
+            </Toolbar>
+        </AppBar>        
+        <Box sx={{ height: '90vh', display: 'flex', flexDirection: 'row' }}>
             <Box
                 sx={{
                 flex: 1,
@@ -32,14 +72,22 @@ const CheckList: React.FC = () => {
                 { selectedItem && <CheckListItemDetail details={selectedItem} /> }
                 </Box>
         </Box>
+        </React.Fragment>
     );
 };
 
 function normalizeItems(items: CheckListDataItem[]): CheckListDataItem[] {
     return items.map((item) => {
-        const normalizedGlossary = normalizeGlossaryItem(item.glossary);
+        let normalizeDetailed_explanation = item.detailed_explanation;
+        let normalizedGlossary = [];
         const normalizedRelevant_links =  item.relevant_links ? normalizeRelevantLinks(item.relevant_links) : normalizeRelevantLinks(item.related_links);
-        return { ...item, glossary: normalizedGlossary, relevant_links: normalizedRelevant_links };
+        if (item.description_detailed) {
+            normalizeDetailed_explanation = item.description_detailed.explanation;
+            normalizedGlossary = normalizeGlossaryItem(item.description_detailed.glossary);
+        } else {
+            normalizedGlossary = normalizeGlossaryItem(item.glossary);
+        }
+        return { ...item, detailed_explanation: normalizeDetailed_explanation, glossary: normalizedGlossary, relevant_links: normalizedRelevant_links };
       });
 }
 
@@ -58,7 +106,7 @@ function normalizeRelevantLinks(relevant_links: any) {
         return Object.entries(relevant_links).map(([title, details]) => ({
             title,
             definition: (details as any).definition || (details as any).description || details || '',
-            url: (details as any).link || (details as any).url || '',
+            url: typeof details == 'string' ? details : ((details as any).link || (details as any).url || ''),
         }));
     }
 }
@@ -72,12 +120,11 @@ function normalizeGlossaryItem(
     else if (Array.isArray(glossary)) {
       // Already an array, return as is
       return glossary;
-    }
-  
+    }  
     // Transform object into an array
     return Object.entries(glossary).map(([term, details]) => ({
       term,
-      definition: (details as any).definition || '',
+      definition: (details as any).definition || details || '',
       link: (details as any).link || '',
     }));
   }

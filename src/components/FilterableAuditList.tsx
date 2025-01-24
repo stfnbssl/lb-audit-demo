@@ -89,7 +89,13 @@ const FilterableCheckListItems: React.FC<FilterableCheckListItemsProps> = ({ ite
           <ListItem
             key={item.idd}
             onClick={() => {onItemSelect(item); console.log('selected item', item);}}
-            sx={{ borderBottom: '1px solid #ddd' }}
+            sx={{ 
+              borderBottom: '1px solid #ddd' ,
+              cursor: 'pointer', // Makes the cursor a pointer on hover
+              '&:hover': {
+                backgroundColor: '#f0f0f0', // Optional hover effect
+              },            
+            }}
           >
             <ListItemText primary={item.idd} secondary={item.description} />
           </ListItem>
