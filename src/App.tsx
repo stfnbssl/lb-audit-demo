@@ -1,10 +1,10 @@
 import React from 'react';
-import AuditList from './components/AuditList';
+import CheckList from './components/CheckList';
 
 const App: React.FC = () => {
   return (
     <div className="container mx-auto">
-      <AuditList />
+      <CheckList />
     </div>
   );
 };

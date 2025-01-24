@@ -8,7 +8,7 @@ interface AuditItem {
   description: string;
 }
 
-const AuditList: React.FC = () => {
+const CheckListItems: React.FC = () => {
   const auditData = useJsonData<AuditItem>('/lb-audit-demo/data/clist-extension.json');
 
   return (
@@ -27,4 +27,4 @@ const AuditList: React.FC = () => {
   );
 };
 
-export default AuditList;
+export default CheckListItems;
