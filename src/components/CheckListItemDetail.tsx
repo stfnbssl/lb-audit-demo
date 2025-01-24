@@ -26,7 +26,6 @@ const CheckListItemDetail: React.FC<{ details: CheckListDataItem | null }> = ({ 
   if (!details) {
     return <Typography variant="h6">Select an item to view details</Typography>;
   }
-  const [selectedItem, setSelectedItem] = useState<any | null>({});
   const [editorContent, setEditorContent] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
@@ -36,17 +35,17 @@ const CheckListItemDetail: React.FC<{ details: CheckListDataItem | null }> = ({ 
 
 
   const handleEdit = (item: any) => {
-    setSelectedItem(item);
     setEditorContent(JSON.stringify(item || {}, null, 2)); // Start with existing or empty JSON
     setIsEditing(true);
   };
 
   // Handle save
+      /*
   const handleSave = async () => {
     if (!selectedItem) return;
 
     try {
-      /*
+
       const updatedItem = {
         ...selectedItem,
         additionalInfo: JSON.parse(editorContent),
@@ -59,17 +58,15 @@ const CheckListItemDetail: React.FC<{ details: CheckListDataItem | null }> = ({ 
       await axios.put(apiEndpoint, updatedItems);
       setItems(updatedItems);
       setIsEditing(false);
-      setSelectedItem(null);
-      */
+
     } catch (error) {
       console.error("Error saving item:", error);
     }
   };
-
+      */
   // Handle modal close
   const handleClose = () => {
     setIsEditing(false);
-    setSelectedItem(null);
   };
 
   return (
@@ -89,7 +86,7 @@ const CheckListItemDetail: React.FC<{ details: CheckListDataItem | null }> = ({ 
             <ul>
               {references.map((ref, index) => (
                 <li key={index}>
-                  <strong>{ref.name}:</strong> {ref.value}
+                  <strong>{ref.name}:</strong> {ref.value as string}
                 </li>
               ))}
             </ul>

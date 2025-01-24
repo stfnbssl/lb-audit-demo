@@ -82,8 +82,8 @@ function normalizeItems(items: CheckListDataItem[]): CheckListDataItem[] {
         let normalizedGlossary = [];
         const normalizedRelevant_links =  item.relevant_links ? normalizeRelevantLinks(item.relevant_links) : normalizeRelevantLinks(item.related_links);
         if (item.description_detailed) {
-            normalizeDetailed_explanation = item.description_detailed.explanation;
-            normalizedGlossary = normalizeGlossaryItem(item.description_detailed.glossary);
+            normalizeDetailed_explanation = (item.description_detailed as any).explanation;
+            normalizedGlossary = normalizeGlossaryItem((item.description_detailed as any).glossary);
         } else {
             normalizedGlossary = normalizeGlossaryItem(item.glossary);
         }

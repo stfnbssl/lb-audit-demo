@@ -16,9 +16,9 @@ export interface CheckListDataItem {
     category: string;
     description: string;
     detailed_explanation: string;
-    description_detailed: any;
+    description_detailed: string;
     glossary: GlossaryItem[];
     relevant_links: RelevantLink[];
     related_links: any;
-    details: any;
+    [key: string]: string | GlossaryItem[] | RelevantLink[];
 }  
